@@ -84,6 +84,9 @@ extern "C"
 #define PIN_LED              PIN_LED_13
 #define LED_BUILTIN          PIN_LED_13
 
+// Non-pin
+#define PIN_NONE             (37)
+
 /*
  * Analog pins
  */
@@ -193,7 +196,7 @@ static const uint8_t SCL = PIN_WIRE_SCL;
  * USB
  */
 
-#define PIN_USB_HOST_ENABLE (37)  // Not implemented on board
+#define PIN_USB_HOST_ENABLE PIN_NONE  // Not implemented on board
 #define PIN_USB_DM          (23ul)
 #define PIN_USB_DP          (24ul)
 
@@ -238,10 +241,15 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 
 /*
  * SPI Display
+ *
+ * NOTE: The physical pin attached to MOSI is actually being used for the
+ * QSPI flash, but it is not needed for this SERCOM, since the display only
+ * needs to do output. We still specify PAD_SPI_DISP_RX only to satisfy
+ * SPIClass constructors.
  */
 
 #define PIN_SPI_DISP_MOSI    (6ul)
-#define PIN_SPI_DISP_MISO    (28ul)  // Not used - output-only
+#define PIN_SPI_DISP_MISO    PIN_NONE  // Not used - output-only
 #define PIN_SPI_DISP_SCK     (7ul)
 #define PIN_SPI_DISP_SS      (16ul)
 #define PIN_DISP_DC          (17ul)
@@ -249,7 +257,7 @@ static const uint8_t SCL = PIN_WIRE_SCL;
 #define PIN_DISP_LED         PIN_LED
 #define PERIPH_SPI_DISP      sercom4
 #define PAD_SPI_DISP_TX      SPI_PAD_0_SCK_1
-#define PAD_SPI_DISP_RX      SERCOM_RX_PAD_3  // Not used - output-only
+#define PAD_SPI_DISP_RX      SERCOM_RX_PAD_2  // Not used - output-only
 #define SPI_SETTINGS_DISP    SPISettings(15000000, MSBFIRST, SPI_MODE0)
 
 #ifdef __cplusplus
