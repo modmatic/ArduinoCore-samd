@@ -14,6 +14,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+menu.pixels=Pixel Size
 menu.cache=Cache
 menu.speed=CPU Speed
 menu.opt=Optimize
@@ -53,6 +54,9 @@ dotmg_cart_samd51.bootloader.tool=openocd
 
 dotmg_cart_samd51.compiler.arm.cmsis.ldflags="-L{runtime.tools.CMSIS-4.5.0.path}/CMSIS/Lib/GCC/" "-L{build.variant.path}" -larm_cortexM4lf_math -mfloat-abi=hard -mfpu=fpv4-sp-d16
 
+dotmg_cart_samd51.menu.pixels.normal=Normal
+dotmg_cart_samd51.menu.pixels.2x=2x
+dotmg_cart_samd51.menu.pixels.2x.build.flags.pixels=-DDOTMG_PIXEL_SIZE_2X
 dotmg_cart_samd51.menu.cache.on=Enabled
 dotmg_cart_samd51.menu.cache.on.build.cache_flags=-DENABLE_CACHE
 dotmg_cart_samd51.menu.cache.off=Disabled
